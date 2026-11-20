@@ -1,0 +1,331 @@
+:root {
+  color-scheme: dark;
+
+  --forest-dark: #0c2a21;
+  --forest: #123a2d;
+  --sage: #c4db9b;
+  --gold: #e7bd63;
+  --pink: #f7b9c6;
+  --cream: #f2f4e3;
+  --mist: #b3cdba;
+
+  --display-font: "Bagel Fat One", "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --body-font: "Nunito", "Segoe UI", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+  background: var(--forest-dark);
+  color: var(--cream);
+  font: 400 1rem / 1.65 var(--body-font);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-family: var(--display-font);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.opening-page {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 24px 0;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(247, 216, 140, 0.22), transparent 24%),
+    linear-gradient(145deg, #071d16 0%, #123a2d 58%, #0c2a21 100%);
+  animation: opening-reveal 1.2s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+.opening-page::before,
+.opening-page::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border: 1px solid rgba(231, 189, 99, 0.16);
+  border-radius: 50%;
+}
+
+.opening-page::before {
+  left: -150px;
+  top: -130px;
+  box-shadow: 0 0 70px rgba(231, 189, 99, 0.08);
+}
+
+.opening-page::after {
+  right: -150px;
+  bottom: -130px;
+  box-shadow: 0 0 70px rgba(231, 189, 99, 0.08);
+}
+
+.opening-wrap {
+  position: relative;
+  z-index: 2;
+  width: min(760px, calc(100% - 32px));
+  min-height: min(640px, calc(100svh - 48px));
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 18px;
+  padding: 36px 22px;
+  text-align: center;
+  border: 1px solid rgba(231, 189, 99, 0.38);
+  border-radius: 50% 50% 28px 28px;
+  background: rgba(242, 244, 227, 0.035);
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.28),
+    inset 0 0 60px rgba(231, 189, 99, 0.04);
+  backdrop-filter: blur(4px);
+  animation: opening-card 1.4s 0.25s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+.opening-kicker {
+  color: var(--sage);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.78rem;
+  font-weight: 800;
+  opacity: 0;
+  animation: opening-rise 0.8s 1s ease-out forwards;
+}
+
+.graduation-mark {
+  width: 112px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  opacity: 0;
+  animation: opening-ring 0.9s 0.65s ease-out forwards;
+}
+
+.graduation-mark svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.24));
+}
+
+.opening-wrap h1 {
+  max-width: 100%;
+  color: var(--cream);
+  font-size: clamp(4rem, 16vw, 8rem);
+  text-shadow: 0 10px 35px rgba(0, 0, 0, 0.24);
+}
+
+.opening-wrap h1 span {
+  display: block;
+  opacity: 0;
+  animation: opening-name 1s 1.15s cubic-bezier(0.2, 0.75, 0.25, 1) forwards;
+}
+
+.opening-date {
+  margin-top: 2px;
+  color: var(--gold);
+  font-weight: 800;
+  opacity: 0;
+  animation: opening-rise 0.8s 1.55s ease-out forwards;
+}
+
+.graduation-message {
+  max-width: 38ch;
+  color: var(--mist);
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  line-height: 1.75;
+  opacity: 0;
+  animation: opening-rise 0.8s 1.7s ease-out forwards;
+}
+
+.graduation-wish {
+  color: var(--sage);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.opening-sky {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.opening-star {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 16px var(--gold);
+  animation: opening-star 3s ease-in-out infinite;
+}
+
+.star-one {
+  left: 14%;
+  top: 24%;
+}
+
+.star-two {
+  right: 15%;
+  top: 19%;
+  animation-delay: -1s;
+}
+
+.star-three {
+  left: 22%;
+  bottom: 18%;
+  animation-delay: -2s;
+}
+
+.opening-petal {
+  position: absolute;
+  color: var(--pink);
+  font-size: 22px;
+  opacity: 0.75;
+  animation: opening-fall 9s linear infinite;
+}
+
+.opening-petal-one {
+  left: 8%;
+  top: -40px;
+  animation-delay: -2s;
+}
+
+.opening-petal-two {
+  left: 78%;
+  top: -60px;
+  animation-delay: -5s;
+}
+
+.opening-petal-three {
+  left: 61%;
+  top: -30px;
+  animation-delay: -7s;
+}
+
+@keyframes opening-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes opening-card {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(34px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes opening-ring {
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotate(-30deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes opening-name {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes opening-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes opening-star {
+  50% {
+    opacity: 0.25;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes opening-fall {
+  to {
+    transform: translate(70px, 115vh) rotate(540deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .opening-wrap {
+    gap: 14px;
+  }
+
+  .graduation-mark {
+    width: 94px;
+    height: 84px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .opening-kicker,
+  .graduation-mark,
+  .opening-wrap h1 span,
+  .opening-date,
+  .graduation-message {
+    opacity: 1;
+  }
+
+  .opening-petal {
+    display: none;
+  }
+}
